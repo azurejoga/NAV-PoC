@@ -1,0 +1,227 @@
+{
+  "dataType": "CVE_RECORD",
+  "dataVersion": "5.1",
+  "cveMetadata": {
+    "cveId": "CVE-PENDING",
+    "assignerOrgId": "PENDING",
+    "assignerShortName": "MITRE",
+    "requesterUserId": "PENDING",
+    "serial": 1,
+    "state": "PUBLISHED",
+    "datePublished": "2026-09-16T00:00:00.000Z",
+    "dateUpdated": "2026-09-16T00:00:00.000Z",
+    "dateReserved": "2026-09-16T00:00:00.000Z"
+  },
+  "containers": {
+    "cna": {
+      "providerMetadata": {
+        "orgId": "PENDING",
+        "shortName": "independent",
+        "dateUpdated": "2026-09-16T00:00:00.000Z"
+      },
+      "title": "Netflix Web Platform: Audio Stream Exfiltration via Chrome DevTools Protocol Network Interception Due to Missing CENC Encryption on Audio Adaptation Sets",
+      "descriptions": [
+        {
+          "lang": "en",
+          "value": "The Netflix web streaming platform fails to apply Widevine Content Encryption (CENC) to audio adaptation sets in its MPEG-DASH manifests. As a result, audio segment HTTP responses are delivered as cleartext MPEG-4 Audio containers to the browser. An attacker with local access to a machine running Google Chrome with the remote debugging port enabled (--remote-debugging-port) and an active authenticated Netflix session can attach to the Chrome DevTools Protocol (CDP) WebSocket endpoint, subscribe to Network.responseReceived events, intercept DASH audio segment URLs matching the /range/0- path pattern, and independently re-fetch those URLs without any authentication credential to obtain the full cleartext audio track. The intercepted CDN URLs do not require session cookies or authorization headers to serve the audio content. This constitutes a DRM policy gap in which Widevine is correctly applied to video tracks but omitted for audio tracks, allowing complete audio content exfiltration from any Netflix title accessible to the authenticated session."
+        }
+      ],
+      "affected": [
+        {
+          "vendor": "Netflix",
+          "product": "Netflix Web Streaming Platform",
+          "versions": [
+            {
+              "version": "0",
+              "status": "affected",
+              "lessThanOrEqual": "*",
+              "versionType": "custom"
+            }
+          ],
+          "platforms": [
+            "Web Browser"
+          ],
+          "cpes": [
+            "cpe:2.3:a:netflix:netflix:*:*:*:*:*:web:*:*"
+          ],
+          "defaultStatus": "affected"
+        }
+      ],
+      "problemTypes": [
+        {
+          "descriptions": [
+            {
+              "cweId": "CWE-311",
+              "description": "CWE-311: Missing Encryption of Sensitive Data - Audio adaptation sets in the MPEG-DASH manifest ContentProtection descriptor are not marked for CENC encryption, causing audio segments to be delivered as cleartext fMP4 containers.",
+              "lang": "en",
+              "type": "CWE"
+            }
+          ]
+        },
+        {
+          "descriptions": [
+            {
+              "cweId": "CWE-693",
+              "description": "CWE-693: Protection Mechanism Failure - Widevine DRM is enforced for video tracks but the protection mechanism is not applied to audio tracks, creating an asymmetric content protection policy.",
+              "lang": "en",
+              "type": "CWE"
+            }
+          ]
+        },
+        {
+          "descriptions": [
+            {
+              "cweId": "CWE-319",
+              "description": "CWE-319: Cleartext Transmission of Sensitive Information - Audio segment payloads are transmitted as cleartext over CDN delivery without encryption at the content layer.",
+              "lang": "en",
+              "type": "CWE"
+            }
+          ]
+        }
+      ],
+      "metrics": [
+        {
+          "format": "CVSS",
+          "scenarios": [
+            {
+              "lang": "en",
+              "value": "GENERAL"
+            }
+          ],
+          "cvssV3_1": {
+            "version": "3.1",
+            "vectorString": "CVSS:3.1/AV:L/AC:L/PR:L/UI:R/S:U/C:H/I:N/A:N",
+            "attackVector": "LOCAL",
+            "attackComplexity": "LOW",
+            "privilegesRequired": "LOW",
+            "userInteraction": "REQUIRED",
+            "scope": "UNCHANGED",
+            "confidentialityImpact": "HIGH",
+            "integrityImpact": "NONE",
+            "availabilityImpact": "NONE",
+            "baseScore": 5.0,
+            "baseSeverity": "MEDIUM"
+          }
+        },
+        {
+          "format": "CVSS",
+          "scenarios": [
+            {
+              "lang": "en",
+              "value": "GENERAL"
+            }
+          ],
+          "cvssV4_0": {
+            "version": "4.0",
+            "vectorString": "CVSS:4.0/AV:L/AC:L/AT:N/PR:L/UI:P/VC:H/VI:N/VA:N/SC:N/SI:N/SA:N",
+            "attackVector": "LOCAL",
+            "attackComplexity": "LOW",
+            "attackRequirements": "NONE",
+            "privilegesRequired": "LOW",
+            "userInteraction": "PASSIVE",
+            "vulnConfidentialityImpact": "HIGH",
+            "vulnIntegrityImpact": "NONE",
+            "vulnAvailabilityImpact": "NONE",
+            "subConfidentialityImpact": "NONE",
+            "subIntegrityImpact": "NONE",
+            "subAvailabilityImpact": "NONE",
+            "exploitMaturity": "PROOF_OF_CONCEPT",
+            "baseScore": 4.8,
+            "baseSeverity": "MEDIUM"
+          }
+        }
+      ],
+      "references": [
+        {
+          "url": "https://github.com/azurejoga/nav",
+          "name": "PoC Repository",
+          "tags": [
+            "exploit",
+            "third-party-advisory"
+          ]
+        },
+        {
+          "url": "https://github.com/IljaN/narr",
+          "name": "Upstream Tool (narr)",
+          "tags": [
+            "related"
+          ]
+        },
+        {
+          "url": "https://www.youtube.com/@ohackercego",
+          "name": "Video Walkthrough (Portuguese)",
+          "tags": [
+            "media"
+          ]
+        },
+        {
+          "url": "http://juanmathewsrebellosantos.com/",
+          "name": "Researcher: Juan Mathews Rebello Santos",
+          "tags": [
+            "third-party-advisory"
+          ]
+        },
+        {
+          "url": "https://www.linkedin.com/in/juan-mathews-rebello-santos-/",
+          "name": "LinkedIn: Juan Mathews Rebello Santos",
+          "tags": [
+            "third-party-advisory"
+          ]
+        },
+        {
+          "url": "https://www.linkedin.com/in/jhonata-fernandes-cordeiro-a887bb293/",
+          "name": "LinkedIn: Jhonata Fernandes Cordeiro",
+          "tags": [
+            "third-party-advisory"
+          ]
+        },
+        {
+          "url": "https://chromedevtools.github.io/devtools-protocol/",
+          "name": "Chrome DevTools Protocol Specification",
+          "tags": [
+            "technical-description"
+          ]
+        },
+        {
+          "url": "https://www.w3.org/TR/encrypted-media/",
+          "name": "Encrypted Media Extensions W3C Specification",
+          "tags": [
+            "technical-description"
+          ]
+        }
+      ],
+      "credits": [
+        {
+          "lang": "en",
+          "value": "Juan Mathews Rebello Santos",
+          "type": "finder"
+        },
+        {
+          "lang": "en",
+          "value": "Jhonata Fernandes Cordeiro",
+          "type": "finder"
+        }
+      ],
+      "timeline": [
+        {
+          "time": "2026-09-16T00:00:00.000Z",
+          "lang": "en",
+          "value": "Vulnerability identified during independent security research"
+        },
+        {
+          "time": "2026-09-16T00:00:00.000Z",
+          "lang": "en",
+          "value": "PoC developed and validated against live Netflix platform"
+        },
+        {
+          "time": "2026-09-16T00:00:00.000Z",
+          "lang": "en",
+          "value": "Public PoC release with simultaneous vendor notification to Netflix Security (security@netflix.com)"
+        }
+      ],
+      "source": {
+        "discovery": "EXTERNAL"
+      }
+    }
+  }
+}
