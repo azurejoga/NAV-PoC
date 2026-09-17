@@ -1,7 +1,6 @@
 # Netflix Audio Stream Exfiltration via Chrome DevTools Protocol Network Interception
 
 **Disclosure Date:** 2026-09-16
-**CVE Identifier:** Pending Assignment (submitted to MITRE 2026-09-16)
 **CWE:** CWE-311 (Missing Encryption of Sensitive Data), CWE-693 (Protection Mechanism Failure)
 **Severity:** Medium
 **Status:** Unpatched (vendor notified)
@@ -16,7 +15,7 @@
 **Juan Mathews Rebello Santos**
 Security Researcher
 LinkedIn: https://www.linkedin.com/in/juan-mathews-rebello-santos-/
-Website: http://juanmathewsrebellosantos.com/
+Website: https://juanmathewsrebellosantos.com/
 
 **Jhonata Fernandes Cordeiro**
 Security Researcher
@@ -335,10 +334,9 @@ This is not a Widevine implementation flaw. Widevine correctly encrypts what Net
 - CVSS v4.0 specification: https://www.first.org/cvss/v4-0/
 - CWE-311: https://cwe.mitre.org/data/definitions/311.html
 - CWE-693: https://cwe.mitre.org/data/definitions/693.html
-- PoC repository: https://github.com/azurejoga/nav
-- Original upstream tool (narr): https://github.com/IljaN/narr
+- PoC repository: https://github.com/azurejoga/NAV-PoC
 - Video walkthrough (Portuguese): https://www.youtube.com/@ohackercego
-- Juan Mathews Rebello Santos: http://juanmathewsrebellosantos.com/
+- Juan Mathews Rebello Santos: https://juanmathewsrebellosantos.com/
 
 ---
 
